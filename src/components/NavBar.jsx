@@ -1,21 +1,22 @@
 import React from 'react'
 import NavCard from './NavCard'
+import "../css/NavBar.css";
 
 export default function NavBar() {
   return (
-    <nav>
+    <nav className='nav-bar'>
         <ul>
             <li>
-                <NavCard/>
+                <NavCard icon={"Volume Icon"}/>
             </li>
             <li>
-                <NavCard/>
+                <NavCard icon={"Audio Type Icon"}/>
             </li>
             <li>
-                <NavCard/>
+                <NavCard icon={"Tap Icon"}/>
             </li>
             <li>
-                <NavCard/>
+                <NavCard icon={"Custom Icon"}/>
             </li>
         </ul>
     </nav>

@@ -1,0 +1,21 @@
+.nav-bar {
+    padding: 3rem;
+}
+
+.nav-bar ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav-bar li {
+    padding: 1rem;
+}
+
+.nav-card {
+    border: 1px solid gray;
+    height: 100px;
+    width: 100px;
+    padding: 1.5rem;
+}

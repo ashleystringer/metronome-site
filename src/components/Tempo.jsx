@@ -7,9 +7,9 @@ export default function Tempo({ bpm, setBpm }) {
     setBpm(e.target.valueAsNumber);
   }
   return (
-    <div className='beat-range'v>
+    <div className='beat-range'>
       <input type="range" min="30" max="244" value={bpm} onChange={onChange}/>
-      <div>BPM: {bpm}</div>
+      <div className='bpm'>BPM: {bpm}</div>
     </div>
   )
 }

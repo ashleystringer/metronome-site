@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Tempo from "./Tempo"
 import TimeSignature from './TimeSignature';
+import StartButton from './StartButton';
 import "../css/Metronome.css";
 
 export default function Metronome() {
 
 
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMetrPlaying, setIsMetrPlaying] = useState(false);
   const [beatNumberState, setBeatNumberState] = useState(0);
   const [noteValue, setNoteValue] = useState(0);
   //const noteValueRef = useRef(0);
@@ -19,9 +20,7 @@ export default function Metronome() {
   const tempo = useRef(95);
   const intervalRef = useRef();
 
-  const togglePlayStatus = () => {
-    setIsPlaying(prevState => !prevState);
-  }
+
 
 
   useEffect(() => {
@@ -66,7 +65,7 @@ export default function Metronome() {
       */
     }   
 
-    if(isPlaying){
+    if(isMetrPlaying){
       intervalRef.current = setInterval(test, (60000/tempo.current)); //((4/60000) * 1000)
     }else{
       clearInterval(intervalRef.current);
@@ -74,9 +73,9 @@ export default function Metronome() {
     
     return () => clearInterval(intervalRef.current);
 
-    console.log(`isPlaying: ${isPlaying}`);
+    console.log(`isMetrPlaying: ${isMetrPlaying}`);
 
-  }, [isPlaying]);
+  }, [isMetrPlaying]);
   
 
   return (
@@ -89,7 +88,7 @@ export default function Metronome() {
         noteNumber={noteNumber}
         setNoteNumber={setNoteNumber}
       />
-      <button onClick={togglePlayStatus} className='play-btn'>Toggle</button>
+      <StartButton isMetrPlaying={isMetrPlaying} setIsMetrPlaying={setIsMetrPlaying}/>
     </div>
   )
 }

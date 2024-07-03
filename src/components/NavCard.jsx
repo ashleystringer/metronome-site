@@ -1,4 +1,5 @@
 import React from 'react'
+import "../css/NavBar.css";
 
 export default function NavCard({icon, callback}) {
 
@@ -9,6 +10,6 @@ export default function NavCard({icon, callback}) {
     */
 
   return (
-    <div>NavCard</div>
+    <div className='nav-card'>{icon}</div>
   )
 }
