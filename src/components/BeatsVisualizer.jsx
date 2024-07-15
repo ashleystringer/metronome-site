@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function BeatsVisualizer({ noteNumber, selectedNote }) {
     const [beats, setBeats] = useState(new Array(4).fill(0));
     
+    console.log(`beats: ${beats}`);
+
     useEffect(() => {
         if(noteNumber){
             setBeats(new Array(noteNumber).fill(0));

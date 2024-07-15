@@ -1,3 +1,12 @@
+/*
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+  
+}
+
+*/
+
 export function simpleTime(noteNumber) {
     const timeSignature = new Array();
     for (let beat = 0; beat < noteNumber; beat++) {
