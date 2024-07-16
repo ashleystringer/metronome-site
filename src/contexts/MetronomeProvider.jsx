@@ -11,6 +11,7 @@ export default function MetronomeProvider({ children }) {
   
     const [notePattern, setNotePattern] = useState(simpleTime(4));
     const [selectedNote, setSelectedNote] = useState(1);
+    const [selectedTempo, setSelectedTempo] = useState();
 
     function createNotePattern(noteNumber, noteValue){
         console.log(`noteValue: ${noteValue}, noteNumber: ${noteNumber}`);
@@ -25,7 +26,9 @@ export default function MetronomeProvider({ children }) {
         notePattern,
         setNotePattern,
         selectedNote,
-        setSelectedNote
+        setSelectedNote,
+        selectedTempo,
+        setSelectedTempo
     }
 
     return (

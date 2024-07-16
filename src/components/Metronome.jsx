@@ -13,14 +13,11 @@ export default function Metronome() {
   const [isMetrPlaying, setIsMetrPlaying] = useState(false);
   const [beatNumberState, setBeatNumberState] = useState(0);
   const [noteValue, setNoteValue] = useState(4);
-  //const noteValueRef = useRef(0);
   const [noteNumber, setNoteNumber] = useState(4);
-  //const noteNumberRef = useRef(0);
-  //const [notePattern, setNotePattern] = useState(4);
   const noteRef = useRef(4);
-  const [bpm, setBpm] = useState(100);
+  const [tempo, setTempo] = useState(100);
   const beatNumberRef = useRef(0);
-  const tempo = useRef(95);
+  const tempoRef = useRef(95);
   const intervalRef = useRef();
 
   const { 
@@ -33,23 +30,29 @@ export default function Metronome() {
 
   useEffect(() => {
 
-    tempo.current = bpm;
+    tempoRef.current = tempo;
 
-    const test = () => {
+    const playMetronome = () => {
       if(noteRef.current == notePattern.length){
         noteRef.current = 0;
         setSelectedNote(1);
       }
 
       if(notePattern[noteRef.current] == 1){
-        //synth.triggerAttackRelease("C3", noteValueStr);
         console.log("notePattern[noteRef.current] == 1");
+        /*
+          AUDIO PLACEHOLDER
+        */
       }else if(notePattern[noteRef.current] == 2){
-        //synth.triggerAttackRelease("C2", noteValueStr);
         console.log("notePattern[noteRef.current] == 2");
+        /*
+          AUDIO PLACEHOLDER
+        */
       }else{
-        //synth.triggerAttackRelease("C4", noteValueStr);
-        console.log("notePattern[noteRef.current] == 3");        
+        console.log("notePattern[noteRef.current] == 3");      
+        /*
+          AUDIO PLACEHOLDER
+        */  
       }
 
       noteRef.current++;
@@ -57,16 +60,14 @@ export default function Metronome() {
     }  
 
     if(isMetrPlaying){
-      intervalRef.current = setInterval(test, (60000/tempo.current)); //((4/60000) * 1000)
+      intervalRef.current = setInterval(playMetronome, (60000/tempoRef.current)); //((4/60000) * 1000)
     }else{
       clearInterval(intervalRef.current);
     }
     
     return () => clearInterval(intervalRef.current);
 
-    console.log(`isMetrPlaying: ${isMetrPlaying}`);
-
-  }, [isMetrPlaying, bpm]);
+  }, [isMetrPlaying, tempo, noteValue, noteNumber, notePattern]);
 
   useEffect(() => {
     if(noteValue == 4){
@@ -75,7 +76,6 @@ export default function Metronome() {
       setNotePattern(compoundTime(noteNumber));
     }
 
-    console.log(notePattern);
   }, [noteValue, noteNumber]);
   
 
@@ -86,7 +86,7 @@ export default function Metronome() {
         noteValue={noteValue} 
         noteNumber={noteNumber}
       />
-      <Tempo bpm={bpm} setBpm={setBpm}/>
+      <Tempo tempo={tempo} setTempo={setTempo}/>
       <StartButton isMetrPlaying={isMetrPlaying} setIsMetrPlaying={setIsMetrPlaying}/>
       <TimeSignature 
         noteValue={noteValue} 
@@ -95,5 +95,5 @@ export default function Metronome() {
         setNoteNumber={setNoteNumber}
       />
     </div>
-  )
+  );
 }
